@@ -1,11 +1,12 @@
 import React from "react";
-
+import RatingCard from "./components/ratingCard";
 function App() {
   return (
-    <div>
-      <h1 className="text-center text-[3rem] font-bold text-red-600">
-        Card component
-      </h1>
+    <div
+      id="mainContainer"
+      className="container grid h-[100vh] place-content-center"
+    >
+      <RatingCard />
     </div>
   );
 }
