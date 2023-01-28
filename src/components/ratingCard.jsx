@@ -8,8 +8,10 @@ function RatingCard({ onCheck, data, handleSubmit }) {
       <button
         key={rating}
         className={`${
-          data.rating === rating && data.checked ? "bg-orange" : ""
-        } h-12 w-12 rounded-full bg-mediumGrey hover:bg-orange`}
+          data.rating === rating && data.checked
+            ? "h-12 w-12 rounded-full bg-orange"
+            : "h-12 w-12 rounded-full bg-mediumGrey hover:bg-orange"
+        } `}
         onClick={() => {
           onCheck(rating);
         }}
