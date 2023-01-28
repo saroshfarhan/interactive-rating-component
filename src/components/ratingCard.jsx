@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import star from "../assets/icon-star.svg";
 
-function RatingCard() {
-  const [rating, setRating] = useState(""); //need to lift the state up to parent
-
+function RatingCard({ onCheck, data, handleSubmit }) {
   const r = [1, 2, 3, 4, 5];
-  //need to apply css to cehcked and unchecked button
   const radio = r.map((rating) => {
     return (
       <button
         key={rating}
-        className="h-12 w-12 rounded-full bg-mediumGrey hover:bg-orange"
+        className={`${
+          data.rating === rating && data.checked
+            ? "h-12 w-12 rounded-full bg-orange"
+            : "h-12 w-12 rounded-full bg-mediumGrey hover:bg-orange"
+        } `}
+        onClick={() => {
+          onCheck(rating);
+        }}
       >
         {rating}
       </button>
@@ -36,7 +40,9 @@ function RatingCard() {
       <div className="mt-8 flex justify-between">{radio}</div>
       <button
         type="submit"
-        className="mt-10 w-full rounded-full bg-orange py-3 text-center uppercase tracking-widest hover:bg-white hover:text-orange"
+        className=" mt-10 w-full rounded-full bg-orange py-3 text-center uppercase tracking-widest hover:bg-white hover:text-orange disabled:opacity-50 disabled:hover:cursor-not-allowed disabled:hover:bg-orange disabled:hover:text-white"
+        disabled={data.rating === ""}
+        onClick={handleSubmit}
       >
         Submit
       </button>
