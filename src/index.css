@@ -8,3 +8,23 @@
   font-family: "Overpass", sans-serif;
   font-size: 15px;
 }
+
+.radio-container label .radio-container input {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.radio-container input[type="radio"] {
+  display: none;
+
+  z-index: 100;
+}
+
+.radio-container label {
+  cursor: pointer;
+  z-index: 90;
+}
