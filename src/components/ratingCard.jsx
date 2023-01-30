@@ -1,23 +1,42 @@
 import React from "react";
 import star from "../assets/icon-star.svg";
+import "../index.css";
 
 function RatingCard({ onCheck, data, handleSubmit }) {
   const r = [1, 2, 3, 4, 5];
   const radio = r.map((rating) => {
     return (
-      <button
+      // <button
+      //   key={rating}
+      //   className={`${
+      //     data.rating === rating && data.checked
+      //       ? "h-12 w-12 rounded-full bg-orange"
+      //       : "h-12 w-12 rounded-full bg-mediumGrey hover:bg-orange"
+      //   } `}
+      //   onClick={() => {
+      //     onCheck(rating);
+      //   }}
+      // >
+      //   {rating}
+      // </button>
+      <label
+        htmlFor={rating}
         key={rating}
         className={`${
           data.rating === rating && data.checked
-            ? "h-12 w-12 rounded-full bg-orange"
-            : "h-12 w-12 rounded-full bg-mediumGrey hover:bg-orange"
-        } `}
-        onClick={() => {
-          onCheck(rating);
-        }}
+            ? " radio-label h-12 w-12 rounded-full bg-orange"
+            : " radio-label h-12 w-12 rounded-full bg-mediumGrey hover:bg-orange"
+        } flex items-center justify-center`}
       >
+        <input
+          type="radio"
+          name="rating"
+          id={rating}
+          value={rating}
+          onChange={() => onCheck(rating)}
+        />
         {rating}
-      </button>
+      </label>
     );
   });
 
@@ -37,7 +56,7 @@ function RatingCard({ onCheck, data, handleSubmit }) {
         Please let us know how we did with your support request. All feedback is
         appreciated to help us improve our offering!
       </p>
-      <div className="mt-8 flex justify-between">{radio}</div>
+      <div className="radio-container mt-8 flex justify-between">{radio}</div>
       <button
         type="submit"
         className=" mt-10 w-full rounded-full bg-orange py-3 text-center uppercase tracking-widest hover:bg-white hover:text-orange disabled:opacity-50 disabled:hover:cursor-not-allowed disabled:hover:bg-orange disabled:hover:text-white"
